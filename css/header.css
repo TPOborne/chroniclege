@@ -1,0 +1,118 @@
+.header {
+    background: #04040a;
+    padding: 10px 0px;
+    margin-bottom: 10px;
+}
+
+.headerContainer {
+    margin: 0 auto;
+    width: 80%;
+    position:relative;
+}
+
+#icon {
+    width: 30px;
+    position:absolute;
+    right:-30px;
+    top:18px;
+    display: none;
+    
+}
+
+#icon:hover hr {
+    border: 1px solid red;
+    cursor: pointer;
+}
+
+#icon hr {
+    border: 1px solid white;
+}
+
+.logo {
+    font-family: 'Crimson Text';
+    font-size: 62px;
+    text-shadow: 0px 0px 70px #fff;
+    text-transform: uppercase;
+    color: yellow;
+    background: -webkit-linear-gradient(transparent, transparent),
+                -webkit-linear-gradient(top, rgba(213,173,109,1) 0%, rgba(213,173,109,1) 26%, rgba(226,186,120,1) 35%, rgba(163,126,67,1) 45%,                   rgba(145,112,59,1) 61%, rgba(213,173,109,1) 100%);
+	background: -o-linear-gradient(transparent, transparent);
+	            -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+    width: 40%;
+    float: left;
+    height: 67px;
+}
+.logoSmaller {
+    font-size: 50px;
+}
+
+.login {
+    color: white;
+    text-align: right;
+    float: right;
+    width: 58%;
+    margin: 25px 0px;
+}
+
+.login a {
+    color: yellow;
+}
+
+input {
+    width: 130px;
+}
+
+input[type="submit"] {
+    border: none;
+    padding: 3px 10px;
+    background: #461414;
+    color: #fff;
+    width: 60px;
+    margin-left: 4px;
+}
+input[type="submit"]:hover {
+    cursor: pointer;
+}
+
+
+
+@media screen and (max-width: 767px) {
+    #icon {
+        display: block;
+    }
+    .header {
+        margin:0 auto;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .logo {
+        float:none;
+        width: auto;
+        text-align: left;
+    }
+    .login {
+
+        margin:0 auto !important;
+        padding:0px;
+        float:none;
+        display: inline-block;
+        max-width: 250px;
+        width:75%;
+        text-align: center; 
+        display: none;
+    }
+
+}
+
+/*
+@media screen and (max-width: 499px) {
+    .logo {
+        float: left;
+        width: 100%;
+    }
+    .login {
+        float: left;
+        width: 100%;
+    }
+}*/

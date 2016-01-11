@@ -1,0 +1,136 @@
+
+.forumContainer {
+    min-width: 400px;
+    border: 1px solid #fff;
+    background: #f2f5e8;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+.forumGroup {
+    float: left;
+    width: 100%;
+    border-bottom: 1px solid #000;
+}
+
+.forumGroup#header a {
+    color: #fff;
+}
+
+.forumGroup#header a:hover {
+    text-decoration: underline;
+}
+
+.forumGroup#header {
+    background: #461414;
+    color: #fff;
+    font-size: 15px;
+}
+
+.fBox1 {
+    width: 46%;
+    padding: 15px 2%;
+    float: left;
+}
+.fBox2 {
+    width: 16%;
+    padding: 15px 2%;
+    float: left;
+}
+.fBox3 {
+    width: 11%;
+    padding: 15px 2%;
+    float: left;
+    font-size: 15px;
+}
+.fBox4 {
+    width: 11%;
+    padding: 15px 2%;
+    float: left;
+    font-size: 15px;
+}
+
+#lowerBy10 {
+    margin-top: 10px;
+}
+
+.subRow {
+    width: 100%;
+    font-size: 13px;
+}
+
+.subRow a{
+    color: #89862a;
+    text-decoration: none;
+}
+
+.forumPost {
+    float: left;
+    width: 100%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border: 1px solid #000;
+    margin: 10px 0px;
+    background: #c3c1b6;
+}
+
+.reply {
+    padding: 10px;
+}
+
+textarea {
+    width: 100%;
+    min-height: 100px;
+}
+
+.postHeader {
+    width: 98%;
+    background: #000;
+    color: #bbb;
+    text-align: right;
+    padding: 2px 1%;
+    float: left;
+    font-size: 12px;
+}
+
+.postDetails {
+    width: 15%;
+    float: left;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border-right: 1px solid #fff;
+    padding: 10px;
+    background: #461414;
+    color: white;
+    font-size: 14px;
+}
+
+.postText {
+    width: 85%;
+    float: right;
+    padding: 10px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+@media screen and (max-width: 799px) {
+    .postDetails {
+        width: 20%;
+    }
+    .postText {
+        width: 80%;
+    }
+}
+
+
+@media screen and (max-width: 499px) {
+    .postDetails {
+        width: 30%;
+    }
+    .postText {
+        width: 70%;
+    }
+}

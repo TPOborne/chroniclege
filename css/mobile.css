@@ -1,0 +1,131 @@
+/** STYLES - FOR MOBILE VIEW **/
+
+/**** HEADER ****/
+@media screen and (max-width: 850px) {
+    .header {
+        text-align: center;
+        margin:0 auto;
+    }
+    
+    .headerContainer {
+        text-align: center;
+        margin:0 auto;
+        clear: both;
+    }
+    
+    .logo {
+        width: 100%;
+        text-align: left;
+    }
+    
+    .login {
+        margin:0 auto !important;
+        text-align: center;
+        float:none;
+        display: inline-block;
+        width: 50%;
+        max-width: 260px;
+    }
+    
+    .login label {
+        width: 100px;
+        text-align: left;
+        vertical-align: top;
+        float:left;
+        clear:both;
+        margin:0 auto;
+        margin-right: 10px;
+        padding: 5px 0px;
+    }
+    
+    .login label:not(:first-child), .login input[type="password"], .login input[type="submit"] {
+        margin-top: 5px;
+    }
+    
+    .login input[type="text"], input[type="password"] {
+        vertical-align: top;
+        float:left;
+    }
+    
+    input::-webkit-input-placeholder {
+        color:white;
+    }
+    
+    .login input[type="submit"] {
+        position:relative;
+        float:right;
+        margin-right: 18px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    #icon {
+        display: block;
+        margin-right: 10px;
+    }
+    .header {
+        margin:0 auto;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .logo {
+        float:none;
+        width: auto;
+        text-align: left;
+    }
+    
+    .login {
+        display: none;
+        width: 100%;
+    }
+    
+    .logo {
+        font-size: 350%;
+    }
+    
+    .logoSmaller {
+        font-size:70%;
+    }
+    
+}
+
+/**** MAIN CONTAINER *****/
+.mainContainer {
+    width: 98%;
+}
+
+.homeContainer {
+    min-width: none;
+    max-width: none;
+    padding: 0px 0px !important;
+    width: 98% !important;
+    margin:0 auto;
+}
+
+.homeContainer h2{
+    font-size: 30px;
+    text-align: center;    
+}
+
+.homeContainer h4 {
+    font-size: 20px;
+    text-align: center;    
+}
+
+@media screen and (max-width: 600px) {
+
+}
+
+/*
+    .login {
+
+        margin:0 auto !important;
+        padding:0px;
+        float:none;
+        display: inline-block;
+        max-width: 250px;
+        width:75%;
+        text-align: center; 
+        display: none;
+    }
+*/

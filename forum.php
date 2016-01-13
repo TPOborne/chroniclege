@@ -48,11 +48,12 @@ include_once('includes/login.php');
                     <div class="fBox2">
                         <?php
                             $query2 = mysql_query('
-                                    SELECT u.username, p.date
-                                    FROM posts AS p
-                                    INNER JOIN users AS u ON p.user_id = u.id
-                                    WHERE p.thread_id = 2
-                                    ORDER BY p.id asc
+                                    SELECT username, posts.date
+                                    FROM posts
+                                    INNER JOIN users ON posts.user_id = users.id
+                                    WHERE posts.thread_id = (SELECT id FROM threads WHERE section_id = '.$row["id"].' ORDER BY id DESC                                       LIMIT 1)
+                                    ORDER BY posts.id DESC
+                                    LIMIT 1
                                     ');
                             while($row2 = mysql_fetch_array($query2)) {
                                 $lastPostBy = $row2['username'];
@@ -108,7 +109,13 @@ include_once('includes/login.php');
                         ?>
                     </div>
                     <div class="fBox4" id="lowerBy10">
-                        0
+                        <?php
+                        
+                        $query3 = mysql_query('SELECT COUNT(*) FROM posts, threads WHERE posts.thread_id = threads.id AND threads.section_id = '.$row["id"].';');
+                        
+                        echo mysql_result($query3, 0);
+                        
+                        ?>
                     </div>
                 </div>
                 <?php

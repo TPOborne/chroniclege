@@ -7,7 +7,6 @@ $cardId = $_GET['id'];
 include_once('includes/connect.php');
 include_once('includes/session.php');
 include_once('includes/login.php');
-include_once('includes/card.phps');
 
 if (isset($_SESSION['userId'])) {
     $userId = $_SESSION['userId'];
@@ -17,6 +16,11 @@ $query = mysql_query("SELECT * FROM cards WHERE id = $cardId") or die(mysql_erro
 $row = mysql_fetch_array($query);
 $cardName = $row['name'];
 $cardLink = $row['link'];
+$cardEffect = $row['effect'];
+$cardRarity = $row['rarity'];
+$cardType = $row['type'];
+$cardCategory = $row['category'];
+$cardClass = $row['class'];
 ?>
 <!doctype html>
 <html>
@@ -38,6 +42,16 @@ $cardLink = $row['link'];
                     echo "<h2>".$cardName."</h2>";
                 
                     echo "<img src='images/".$cardLink."' />";
+                
+                    echo "<p>".$cardEffect."</p>";
+                
+                    echo "<p>".$cardRarity."</p>";
+                
+                    echo "<p>".$cardCategory."</p>";
+                
+                    echo "<p>".$cardClass."</p>";
+                
+                    echo "<p>".$cardType."</p>";
                 ?>
             </div>
         </div>

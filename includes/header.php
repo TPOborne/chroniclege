@@ -1,7 +1,7 @@
 <div class="header">  
     <div class="headerContainer">
         <div class="logo">
-            <a href="index.php">C<span class="logoSmaller">hronicle</span>GE</a>
+            <a href="index.php"><img class="logo" src="images/logo/chroniclege.png"/></a>
         </div>
         <div class="login">
             <?php

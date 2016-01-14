@@ -32,8 +32,8 @@ include_once('includes/login.php');
                         
                     <a href="card.php?id=<?php echo $cardId; ?>" >
                         <div class="cardGroup">
+                            <img src="images/<?php echo $link; ?>"/>
                             <h6><?php echo $cardName; ?></h6>
-                            <img src="images/<?php echo $link; ?>" width="100px"/>
                         </div>
                     </a>
                         

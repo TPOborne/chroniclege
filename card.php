@@ -83,7 +83,7 @@ $cardClass = $row['class'];
 
                             echo "<p><span id='attribute'>Rarity: </span>";
                             if ($cardRarity!='Basic') {  
-                                echo "<img src='images/icons/".$cardRarity.".png' class='smallIcon'/>";
+                                echo "<img src='images/icons/".str_replace(' ', '_', $cardRarity).".png' class='smallIcon'/>";
                             }
                             echo " ".$cardRarity."</p>";
 

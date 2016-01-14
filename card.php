@@ -8,10 +8,6 @@ include_once('includes/connect.php');
 include_once('includes/session.php');
 include_once('includes/login.php');
 
-if (isset($_SESSION['userId'])) {
-    $userId = $_SESSION['userId'];
-}
-
 $query = mysql_query("SELECT * FROM cards WHERE id = $cardId") or die(mysql_error());
 $row = mysql_fetch_array($query);
 $cardName = $row['name'];

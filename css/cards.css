@@ -1,5 +1,14 @@
 .cardGroup {
     float: left;
-    width: 100px;
+    width: 120px;
     padding: 10px;
+    height: 220px;
+    text-align: center;
+}
+.cardGroup img{
+    width: 110px;
+}
+
+.cardGroup img:hover {
+    width: 120px;
 }

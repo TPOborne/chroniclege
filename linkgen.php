@@ -8,6 +8,7 @@ while ($row = mysql_fetch_array($query)) {
     $class = $row['class'];
     $rarity = str_replace(' ', '_', $row['rarity']);
     $name = str_replace(' ', '_', $row['name']);
+    $name = str_replace('\'', '', $name);
     $link = "cards/".$category."/".$class."/".$rarity."/".$name.".png";
     
     mysql_query("UPDATE cards SET link = '$link' WHERE id = '$id'");

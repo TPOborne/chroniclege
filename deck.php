@@ -20,21 +20,20 @@ include_once('includes/login.php');
             <div class="homeContainer">
                 
                
-                <h2>Welcome to ChronicleGE</h2>
-                <h4>Your home of decks, guides and news</h4>
-                
-                <h2>Latest Posts</h2>
+                <h2>Browse Decks</h2>
+                <h4>Sort By views, popularity, etc...</h4>
                 
                 <?php
-                //Get 5 latest posts
                 
-                $query = mysql_query("SELECT DISTINCT threads.name, MAX(posts.date), users.username FROM threads, posts, users WHERE posts.thread_id = threads.id AND posts.user_id = users.id GROUP BY posts.date ORDER BY MAX(posts.date) DESC LIMIT 5");
+                $query = mysql_query("SELECT cards.name FROM cards, decks, deck_cards WHERE deck_cards.deck_id = decks.id AND deck_cards.card_id = cards.id AND decks.id = 1");
                 
                 while ($row = mysql_fetch_array($query)) {
-                    echo $row['name'].'<br>';   
-                    echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-'.$row['username'].'<br>';
+                    echo $row['name'].'<br>';
                 }
+
                 ?>
+                
+
             </div>
         </div>
     </body>

@@ -3,13 +3,22 @@ if (!isset($_GET['id'])) {
     echo "Page does not exist";
     exit();
 }
-if (isset($_POST['submitComment'])) {
-    $comment = $_POST['comment_text'];
-} 
 $cardId = $_GET['id'];
 include_once('includes/connect.php');
 include_once('includes/session.php');
 include_once('includes/login.php');
+
+if (isset($_POST['submitComment'])) {
+    $userId = $_SESSION['userId'];
+    $comment = $_POST['comment_text'];
+    $check = mysql_query("SELECT comment FROM card_comments WHERE comment = '$comment'");
+    if (mysql_num_rows($check) == 0) {
+        mysql_query("INSERT INTO card_comments(card_id, comment, user_id) VALUES ('$cardId', '$comment', '$userId');");
+    } else {
+        header("Refresh:0");
+    }
+
+} 
 
 $query = mysql_query("SELECT * FROM cards WHERE id = $cardId") or die(mysql_error());
 $row = mysql_fetch_array($query);
@@ -97,7 +106,20 @@ $cardClass = $row['class'];
                 <div class="comments">
                     <h2>Comments</h2>
                     <div class="bottomContents">
-                       <?php
+                        <?php
+                            $getComments = mysql_query("SELECT comment, users.username FROM card_comments, users WHERE card_id='$cardId' AND card_comments.user_id = users.id ORDER BY date DESC LIMIT 5");
+                            while ($row = mysql_fetch_array($getComments)) {
+                                echo "<div class='comment'>";
+                                    echo "<div class='details' id='padding10side'>".$row['username']."</div>";
+                                    echo "<div class='gap'>&nbsp;</div>";
+                                    echo "<div class='commentText'>";
+                                        echo "<p>".$row['comment']."</p>";
+                                    echo "</div>";
+                                echo "</div>";
+                            }
+                        ?>
+                        
+                        <?php                   
                             if (isset($_SESSION['userId'])) {
                         ?>
                         <form action="" method="POST">

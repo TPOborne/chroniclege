@@ -1,8 +1,6 @@
 <?php
 include_once('includes/connect.php');
 
-//cards/enemy/general/basic/barbarian_warrior.png
-
 $query = mysql_query("SELECT * FROM cards");
 while ($row = mysql_fetch_array($query)) {
     $id = $row['id'];

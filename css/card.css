@@ -65,6 +65,42 @@ h2 {
     float: left;
 }
 
+.comment {
+    background: #ccd1b9;
+    width: 100%;
+    margin-bottom: 10px;
+    float: left;
+}
+
+.details {
+    background: blue;
+    width: 140px;
+    float: left;
+    padding-top: 20px;
+    padding-bottom: 20px; 
+}
+
+.gap {
+    width: 10px;
+    padding: 20px 0px;
+    float: left;
+}
+
+.commentText {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+}
+
+.commentText p{
+    margin: 0px 10px;
+}
+
+#padding10side {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
 .bottomContents {
     padding: 0px 20px;
 }

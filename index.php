@@ -28,7 +28,7 @@ include_once('includes/login.php');
                 <?php
                 //Get 5 latest posts
                 
-                $query = mysql_query("SELECT DISTINCT threads.name, MAX(posts.date), users.username FROM threads, posts, users WHERE posts.thread_id = threads.id AND posts.user_id = users.id GROUP BY posts.date ORDER BY MAX(posts.date) DESC LIMIT 5");
+                $query = mysql_query("SELECT threads.name, users.username FROM threads, posts, users WHERE posts.thread_id = threads.id AND posts.user_id = users.id ORDER BY posts.id DESC LIMIT 5");
                 
                 while ($row = mysql_fetch_array($query)) {
                     echo $row['name'].'<br>';   

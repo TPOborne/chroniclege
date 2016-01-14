@@ -1,0 +1,83 @@
+.topContents {
+    width: 100%;
+    float: left;
+}
+
+.left {
+    width: 40%;
+    float: left;
+}
+.left img {
+    margin-left: 20px;
+}
+.right {
+    width: 60%;
+    float: left;
+}
+
+.right p:first-child {
+    margin-top: 40px;
+}
+
+.right p {
+    margin-bottom: 30px;
+    margin-left: 20px;
+    font-family: 'Crimson Text';
+    font-size: 25px;
+}
+h2 {
+    margin-bottom: 20px;
+}
+.smallIcon {
+    width: 20px;
+}
+.classOzan {
+    background-image:url('../images/icons/ozan30.png');
+    background-repeat: no-repeat;
+    background-position: right bottom;
+}
+.classRaptor {
+    background-image:url('../images/icons/raptor30.png');
+    background-repeat: no-repeat;
+    background-position: right bottom;
+}
+.classAriane {
+    background-image:url('../images/icons/ariane30.png');
+    background-repeat: no-repeat;
+    background-position: right bottom;
+}
+.classLinza {
+    background-image:url('../images/icons/linza30.png');
+    background-repeat: no-repeat;
+    background-position: right bottom;
+}
+
+#attribute {
+    font-size: 18px;
+    width: 100px;
+    float: left;
+    margin-top: 5px;
+}
+
+.comments {
+    margin-top: 20px;
+    width: 100%;
+    float: left;
+}
+
+.bottomContents {
+    padding: 0px 20px;
+}
+
+textarea {
+    width: 100%;
+    min-height: 100px;
+}
+input[type="submit"].send {
+    padding: 10px 30px;
+    width: auto;
+    margin: 10px 0px;
+}
+input[type="submit"]:hover {
+    background: #722c2c;
+}

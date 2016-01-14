@@ -1,7 +1,28 @@
 <?php
+if (!isset($_GET['id'])) {
+    echo "Page does not exist";
+    exit();
+}
+$deckId = $_GET['id'];
 include_once('includes/connect.php');
 include_once('includes/session.php');
 include_once('includes/login.php');
+
+$init_query = mysql_query("SELECT name, description, rating, user_id, users.username FROM decks, users WHERE decks.id = '$deckId' AND decks.user_id = users.id");
+
+if (mysql_num_rows($init_query) == 0) {
+    echo "Page does not exist";
+    exit();
+}
+
+while ($row = mysql_fetch_array($init_query)) {
+    $deckName = $row['name'];
+    $deckDescription = $row['description'];
+    $deckRating = $row['rating'];
+    $userId = $row['user_id'];
+    $username = $row['username'];
+}
+
 ?>
 <!doctype html>
 <html>
@@ -20,10 +41,12 @@ include_once('includes/login.php');
             <div class="homeContainer">
                 
                
-                <h2>Browse Decks</h2>
-                <h4>Sort By views, popularity, etc...</h4>
+                <h2><?php echo $deckName; ?></h2>
+                <h4>Made by <?php echo $username; ?></h4>
                 
                 <?php
+                
+                echo $deckDescription.'<br>';
                 
                 $query = mysql_query("SELECT cards.name FROM cards, decks, deck_cards WHERE deck_cards.deck_id = decks.id AND deck_cards.card_id = cards.id AND decks.id = 1");
                 

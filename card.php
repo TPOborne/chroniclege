@@ -3,6 +3,9 @@ if (!isset($_GET['id'])) {
     echo "Page does not exist";
     exit();
 }
+if (isset($_POST['submitComment'])) {
+    $comment = $_POST['comment_text'];
+} 
 $cardId = $_GET['id'];
 include_once('includes/connect.php');
 include_once('includes/session.php');
@@ -27,6 +30,7 @@ $cardClass = $row['class'];
         <link rel='stylesheet' href='css/reset.css' type='text/css'/>
         <link rel='stylesheet' href='css/main.css?id=1' type='text/css'/>
         <link rel='stylesheet' href='css/header.css' type='text/css'/>
+        <link rel='stylesheet' href='css/card.css' type='text/css'/>
         <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Crimson+Text' type='text/css'/>
     </head>
     <body>
@@ -34,21 +38,82 @@ $cardClass = $row['class'];
         <div class="mainContainer">
             <?php include_once('includes/nav.php'); ?> 
             <div class="backgroundContainer">
+                <h2><?php echo $cardName; ?></h2>
                 <?php
-                    echo "<h2>".$cardName."</h2>";
-                
-                    echo "<img src='images/".$cardLink."' />";
-                
-                    echo "<p>".$cardEffect."</p>";
-                
-                    echo "<p>".$cardRarity."</p>";
-                
-                    echo "<p>".$cardCategory."</p>";
-                
-                    echo "<p>".$cardClass."</p>";
-                
-                    echo "<p>".$cardType."</p>";
+                    if ($cardClass=='Ozan') {
+                        echo '<div class="topContents classOzan">';
+                    } elseif ($cardClass=='Raptor') {
+                        echo '<div class="topContents classRaptor">';
+                    } elseif ($cardClass=='Ariane') {
+                        echo '<div class="topContents classAriane">';
+                    } elseif ($cardClass=='Linza') {
+                        echo '<div class="topContents classLinza">';
+                    } else {
+                        echo '<div class="topContents">';
+                    }
                 ?>
+                    <div class="left">
+                        <?php
+                            echo "<img src='images/".$cardLink."' />";
+                        ?>
+                    </div>
+
+                    <div class="right">
+                        <?php                        
+                            echo "<p><span id='attribute'>Class: </span>";
+                            echo "<img src='images/icons/gold.png' class='smallIcon'/>";
+                            echo " ".$cardClass."</p>";
+
+                            echo "<p><span id='attribute'>Category: </span>";
+                            if ($cardCategory=='Enemy'){
+                                echo "<img src='images/icons/enemy.png' class='smallIcon'/>";
+                            } else {
+                                echo "<img src='images/icons/support.png' class='smallIcon'/>";
+                            }
+                            echo " ".$cardCategory."</p>";
+
+                            echo "<p><span id='attribute'>Rarity: </span>";
+                            if ($cardRarity!='Basic') {  
+                                echo "<img src='images/icons/".$cardRarity.".png' class='smallIcon'/>";
+                            }
+                            echo " ".$cardRarity."</p>";
+
+                            if ($cardType=='') {
+                                $cardType = 'None';
+                            }
+                            echo "<p><span id='attribute'>Type: </span>";
+                            echo "<img src='images/icons/red.png' class='smallIcon' />";
+                            echo " ".$cardType."</p>";
+
+                            echo "<p><span id='attribute'>Text: </span>";
+                            echo "<img src='images/icons/scroll.png' class='smallIcon'/>";
+                            echo " ".$cardEffect."</p>";
+
+                        ?>
+
+                    </div>
+                </div>
+                
+                <div class="comments">
+                    <h2>Comments</h2>
+                    <div class="bottomContents">
+                       <?php
+                            if (isset($_SESSION['userId'])) {
+                        ?>
+                        <form action="" method="POST">
+                            <textarea name="comment_text" placeholder="Reply..."></textarea>
+                            <br>
+                            <input type="submit" value="Send" name="submitComment" class="send"/>
+                        </form>
+                        <?php
+                            } else {
+                                echo "You must be logged in to post.";
+                            }
+                        ?>
+                    </div>
+                </div>
+                
+                <div class="clear"></div>
             </div>
         </div>
     </body>

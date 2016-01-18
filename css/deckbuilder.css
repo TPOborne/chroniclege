@@ -1,0 +1,51 @@
+.cardsContainer{
+    width: 440px;
+    height: 360px;
+    background-color: #461414;
+    background-image: url(../images/batthern.png);
+
+    float: left;
+    overflow-x: hidden; 
+    overflow-y: hidden;
+    white-space:nowrap;
+}
+
+.cardGroup{
+    width: 440px;
+    height: 360px;
+    display: inline-block;
+}
+
+.card{
+    float: left;
+    width: 100px;
+    padding: 5px;
+}
+
+.card img{
+    opacity: 0.8;
+}
+
+.card img:hover{
+    opacity: 1;
+    cursor: pointer;
+}
+
+.pageNumber {
+    width: 100%;
+    background: #2a2a2a;
+    color: #fff;
+    text-align: center;
+}
+
+.decklist {
+    background: #2a2a2a;
+    width: 400px;
+    float: right;
+}
+
+.deckItem {
+    color: white;
+    padding: 5px;
+    border-bottom: 1px solid #fff;
+}

@@ -42,10 +42,35 @@
     background: #2a2a2a;
     width: 400px;
     float: right;
+    font-family: 'Crimson Text';
 }
 
 .deckItem {
     color: white;
-    padding: 5px;
     border-bottom: 1px solid #fff;
+    width: 400px;
+    float: left;
+}
+
+.deckItemName {
+    width: 365px;
+    float: left;
+    padding: 5px 0px 5px 5px;
+}
+
+
+.deckItemQuantity {
+    width: 10px;
+    float: right;
+    padding: 5px 10px;
+    background: #4eb74e;
+    color: white;
+}
+
+.deckItem[rarity='Very rare'] {
+    background-color: yellow;
+    background: url(../images/icons/very_rare.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: contain;
 }

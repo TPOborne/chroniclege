@@ -19,11 +19,11 @@ include_once('includes/login.php');
     <body>
         <?php include_once('includes/header.php'); ?>
         <div class="mainContainer">
-             <?php include_once('includes/nav.php'); ?>
+            <?php include_once('includes/nav.php'); ?>
             <div class="backgroundContainer">
                 <h2>Deckbuilder</h2>
                 <div class="cardsContainer">
-                <?php
+                    <?php
                     $totalCards = mysql_result(mysql_query("SELECT COUNT(id) FROM cards"),0);
                     $totalPages  = (int)($totalCards / 8) + 1;
                     $query = mysql_query("SELECT link, id, name, rarity FROM cards ORDER BY CASE rarity
@@ -62,79 +62,67 @@ include_once('includes/login.php');
                         $count++;
                     }
                     echo "</div>";
-                ?>
+                    ?>
                 </div>
-                
+
                 <div class="decklist">
-                    
+
                 </div>
-                
+
                 <div class="clear"></div>
             </div>
         </div>
-        
+
         <script type="text/javascript">
-            
-            function sortTogether(array1, array2) {
-                var merged = [];
-                for(var i=0; i<array1.length; i++) { merged.push({'a1': array1[i], 'a2': array2[i]}); }
-                merged.sort(function(o1, o2) { return ((o1.a1 < o2.a1) ? -1 : ((o1.a1 == o2.a1) ? 0 : 1)); });
-                for(var i=0; i<merged.length; i++) { array1[i] = merged[i].a1; array2[i] = merged[i].a2; }
-            }
-            
             $(document).ready(function() {
                 var deck = [];
-                var cardIds = [];
-                //var cardRarity = [];
                 $(".card").click(function() {
-                    $cardName = $(this).attr("name");
-                    $cardId = $(this).attr("id");
-                    $cardRarity = $(this).attr("rarity");
-                    $occurances = 0;
+                    $id = $(this).attr("id");
+                    $name = $(this).attr("name");
+                    $rarity = $(this).attr("rarity");
+                    
+                    $count = 0;                    
                     for (var i = 0; i < deck.length; i++) {
-                      if (deck[i] == $cardName) {
-                        $occurances++;
-                      }
-                    }
-                    //if there are less than 2 of this card in deck array
-                    if ($cardRarity=="Very rare" && $occurances==1) {
-                        $occurances++;
-                    }
-                    if ($occurances < 2) {
-                        //add the card to array
-                        deck.push($cardName);
-                        cardIds.push($cardId);
-                        //cardRarity.push($cardRarity);
-                        //deck.sort();
-                        sortTogether(deck, cardIds);
-                        //empty the decklist div
-                        $(".decklist").empty();
-                        //go through all the cards in the deck array.
-                        //if that card appears once append it else replace it
-                        for (var i = 0; i < deck.length; i++) {
-                            //count the number of times this card is in the deck array
-                            $count = 1;
-                            for (var k = i + 1; k < deck.length; k++) {
-                                if (deck[k] == deck[i]) {
-                                    $count++;
-                                    i++; // Skip the item just matched as well
-                                }
-                            }
-                            if ($count == 1) {
-                                //this runs once
-                                var $toBeAppended = $("<div class='deckItem' id='card" + cardIds[i] + "'><div class='deckItemName'>" + deck[i] + "</div></div>");
-                                $(".decklist").append($toBeAppended);
-                            } else if ($count == 2) {
-                                //this runs twice
-                                var $replacement = $("<div class='deckItem' id='card" + cardIds[i] + "'><div class='deckItemName'>" + deck[i] + "</div><div class='deckItemQuantity'>2</div></div>");
-                                $(".decklist").remove(".deckItem#" + cardIds[i]);
-                                $(".decklist").append($replacement);
-                            }
+                        if (deck[i][0] == $id) {
+                            $count++;  
                         }
                     }
+                    
+                    if ($count == 0) {
+                        deck.push(new Array($id, $name, $rarity));
+                    }
+                    if ($count == 1 && $rarity != "Very rare") {
+                        deck.push(new Array($id, $name, $rarity));
+                    }
+                    if ($count==2) {
+                        //do nothing
+                    }
+                    
+                    deck.sort();
+                    $(".decklist").empty();
+                    for (var i = 0; i < deck.length; i++) { 
+                        $card = $("<div class='deckItem' id='" + deck[i][0] + "' name='" + deck[i][1] + "' rarity='" + deck[i][2] + "'>" + deck[i][1] + "</div>");
+                        $(".decklist").append($card);
+                    }                    
+                    
+                    
+                    var seen = [];
+                    $(".deckItem").each(function() {
+                        var txt = $(this).text();
+                        var id = $(this).id();
+                        if (seen[txt]) {
+                            $(".deckItem#"+id).remove();
+                            //$(this).css("display", "none");
+                            
+                        } else {
+                            seen[txt] = true;
+                        }
+                    });
+                    
+                    
                 });
             });
-            
+
             $("img#cardImg").mouseover(function(){
                 $(this).css("opacity", "1");
             });
@@ -144,5 +132,4 @@ include_once('includes/login.php');
         </script>
     </body>
 </html>
-    
-    
+
